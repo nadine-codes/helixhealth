@@ -34,7 +34,7 @@ export default async function LoginPage({
           <form action={enterDemo}>
             <button
               type="submit"
-              className="cta-attn relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-[var(--color-accent)] to-indigo-500 px-4 py-3.5 text-[15px] font-semibold text-white transition hover:brightness-110 active:scale-[0.99]"
+              className="cta-attn cta-shine relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-[var(--color-accent)] to-indigo-500 px-4 py-3.5 text-[15px] font-semibold text-white transition hover:brightness-110 active:scale-[0.99]"
             >
               Enter Demo →
             </button>

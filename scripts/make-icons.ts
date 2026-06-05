@@ -4,29 +4,27 @@ import { resolve } from "node:path";
 import sharp from "sharp";
 import pngToIco from "png-to-ico";
 
-// Rasterize src/app/icon.svg into the favicon set (apple-touch + .ico + manifest PNGs).
+// Rasterize public/icon.svg into the full favicon set in /public.
+// PNG favicons are included explicitly because Safari renders gradient/opacity
+// SVG favicons unreliably; a raster 32x32 is the dependable cross-browser option.
 async function main() {
-  const svgPath = resolve(process.cwd(), "src/app/icon.svg");
-  const svg = readFileSync(svgPath);
-  const appDir = resolve(process.cwd(), "src/app");
+  const svg = readFileSync(resolve(process.cwd(), "public/icon.svg"));
   const pub = resolve(process.cwd(), "public");
 
   async function png(size: number): Promise<Buffer> {
     return sharp(svg, { density: 384 }).resize(size, size).png().toBuffer();
   }
 
-  // Apple touch icon (iOS home screen) — Next serves src/app/apple-icon.png.
-  writeFileSync(resolve(appDir, "apple-icon.png"), await png(180));
-
-  // Android / PWA manifest icons.
+  writeFileSync(resolve(pub, "icon-16.png"), await png(16));
+  writeFileSync(resolve(pub, "icon-32.png"), await png(32));
   writeFileSync(resolve(pub, "icon-192.png"), await png(192));
   writeFileSync(resolve(pub, "icon-512.png"), await png(512));
+  writeFileSync(resolve(pub, "apple-icon.png"), await png(180));
 
-  // Classic favicon.ico (16/32/48) — overrides the default Next favicon.
   const ico = await pngToIco([await png(16), await png(32), await png(48)]);
-  writeFileSync(resolve(appDir, "favicon.ico"), ico);
+  writeFileSync(resolve(pub, "favicon.ico"), ico);
 
-  console.log("Wrote apple-icon.png, favicon.ico, icon-192.png, icon-512.png");
+  console.log("Wrote favicon.ico, apple-icon.png, icon-16/32/192/512.png to /public");
 }
 
 main().catch((e) => {
