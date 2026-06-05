@@ -79,7 +79,7 @@ async function tryConnect(url: string): Promise<Client | null> {
       await client.end();
     } catch {}
     const msg = e instanceof Error ? e.message : String(e);
-    // auth failure means host is right but creds wrong — surface it
+    // auth failure means host is right but creds wrong, so surface it
     if (/password|authentication|SASL/i.test(msg)) {
       throw new Error(`Reached Postgres but auth failed: ${msg}`);
     }

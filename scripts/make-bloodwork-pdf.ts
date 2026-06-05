@@ -65,7 +65,7 @@ function main() {
         ? `${b.refLow} - ${b.refHigh}`
         : b.refHigh != null
         ? `< ${b.refHigh}`
-        : "—";
+        : "-";
 
     doc.fillColor(ink).font("Helvetica").text(b.name, cols.test, y);
     doc.fillColor(flag ? "#e11d48" : ink).font(flag ? "Helvetica-Bold" : "Helvetica")
@@ -73,7 +73,7 @@ function main() {
     doc.fillColor(muted).font("Helvetica").text(b.unit, cols.unit, y);
     doc.fillColor(muted).text(range, cols.range, y);
     doc.fillColor(flag ? "#e11d48" : muted).font(flag ? "Helvetica-Bold" : "Helvetica")
-      .text(flag || "—", cols.flag, y);
+      .text(flag || "-", cols.flag, y);
     doc.moveDown(0.7);
   }
 

@@ -1,7 +1,7 @@
 import type { Prior } from "./types";
 
 // The 45 curated physiological relationships (P01–P45), seeded verbatim from
-// build/01-priors-knowledge-base.md. This is Helix's credibility moat — it
+// build/01-priors-knowledge-base.md. This is Helix's credibility moat: it
 // keeps Claude anchored to real mechanisms instead of hallucinating.
 export const PRIORS: Prior[] = [
   // A. Sleep -> Recovery -> Downstream (Act 1 backbone)
@@ -132,7 +132,7 @@ export const PRIORS: Prior[] = [
     effect: "recovery_score",
     type: "increases",
     mechanism:
-      "Appropriate aerobic activity improves cardiovascular fitness and baseline HRV over time (U-shaped — excess strain reverses this).",
+      "Appropriate aerobic activity improves cardiovascular fitness and baseline HRV over time (U-shaped, where excess strain reverses this).",
     evidence_signals: ["activity_level", "recovery_score", "hrv"],
     confidence: 0.6,
     domain: "activity",
@@ -385,7 +385,7 @@ export const PRIORS: Prior[] = [
     cause: "glp1",
     effect: "weight_trend",
     type: "drives",
-    mechanism: "Reduced energy intake produces weight loss — the therapeutic goal.",
+    mechanism: "Reduced energy intake produces weight loss, the therapeutic goal.",
     evidence_signals: ["glp1", "weight_trend", "calorie_intake"],
     confidence: 0.85,
     domain: "intervention",

@@ -24,7 +24,7 @@ interface ActSpec {
 
 const ACTS: ActSpec[] = [
   {
-    name: "Act 1 — sleep-consistency cascade",
+    name: "Act 1: sleep-consistency cascade",
     question: "Why am I exhausted every afternoon?",
     expectRoot: ["sleep_consistency"],
     expectPriors: ["P01", "P05", "P03"],
@@ -34,7 +34,7 @@ const ACTS: ActSpec[] = [
     },
   },
   {
-    name: "Act 2 — ferritin decline (after bloodwork)",
+    name: "Act 2: ferritin decline (after bloodwork)",
     question: "Why is my recovery declining?",
     expectRoot: ["ferritin"],
     expectPriors: ["P18", "P19", "P20"],
@@ -44,7 +44,7 @@ const ACTS: ActSpec[] = [
     },
   },
   {
-    name: "Act 3 — GLP-1 protein cascade (after logging GLP-1)",
+    name: "Act 3: GLP-1 protein cascade (after logging GLP-1)",
     question: "Why is my recovery worse this month?",
     expectRoot: ["glp1", "protein_intake", "appetite"],
     expectPriors: ["P29", "P30", "P13"],
@@ -124,7 +124,7 @@ async function main() {
 
     const ok = rootOk && priorsOk;
     if (ok) pass++;
-    console.log(ok ? "PASS" : "FAIL", notes.length ? "— " + notes.join("; ") : "");
+    console.log(ok ? "PASS" : "FAIL", notes.length ? ": " + notes.join("; ") : "");
     results.push({ act: act.name, ok, notes });
 
     if (PRECACHE) {

@@ -11,7 +11,8 @@
     "seed": "node --import tsx scripts/seed.ts",
     "harness": "node --import tsx scripts/harness.ts",
     "precache": "node --import tsx scripts/harness.ts --precache",
-    "bloodwork:pdf": "node --import tsx scripts/make-bloodwork-pdf.ts"
+    "bloodwork:pdf": "node --import tsx scripts/make-bloodwork-pdf.ts",
+    "icons": "node --import tsx scripts/make-icons.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.100.1",
@@ -35,6 +36,8 @@
     "eslint-config-next": "^15.5.19",
     "pdfkit": "^0.18.0",
     "pg": "^8.21.0",
+    "png-to-ico": "^3.0.1",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "tsx": "^4.22.4",
     "typescript": "^5"

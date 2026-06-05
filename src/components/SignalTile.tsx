@@ -1,7 +1,7 @@
 import type { EvidenceSignal } from "@/lib/types";
 
 function fmt(v: number | string | null, unit: string | null) {
-  if (v == null) return "—";
+  if (v == null) return "-";
   if (unit === "steps" && typeof v === "number") return v.toLocaleString();
   return String(v);
 }

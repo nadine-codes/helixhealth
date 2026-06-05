@@ -5,7 +5,7 @@ import { SIGNAL_DEF_BY_KEY } from "@/lib/signals-catalog";
 import { generateTimeline, generateCycleTimeline } from "@/lib/seed-timeline";
 import type { SignalRow } from "@/lib/types";
 
-const BRIEFING = `Over the past three weeks your recovery has slipped from 78 to 58, and afternoon fatigue has roughly doubled. The strongest driver appears to be inconsistent sleep timing — your bedtime has varied by over two hours most nights since mid-May, dragging down deep sleep, HRV, and daytime energy. Your weight is trending down nicely on your current plan, but lower activity from poor recovery is starting to work against you. Highest-impact step: stabilize your sleep window.`;
+const BRIEFING = `Over the past three weeks your recovery has slipped from 78 to 58, and afternoon fatigue has roughly doubled. The strongest driver appears to be inconsistent sleep timing: your bedtime has varied by over two hours most nights since mid-May, dragging down deep sleep, HRV, and daytime energy. Your weight is trending down nicely on your current plan, but lower activity from poor recovery is starting to work against you. Highest-impact step: stabilize your sleep window.`;
 
 async function main() {
   const sb = admin();

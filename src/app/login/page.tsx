@@ -26,7 +26,7 @@ export default async function LoginPage({
           </h1>
           <p className="mt-3 text-sm text-[var(--color-muted)]">
             An AI health-intelligence layer that connects your signals into a causal
-            model — and the one action that matters.
+            model, and the one action that matters.
           </p>
         </div>
 

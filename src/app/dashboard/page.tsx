@@ -69,7 +69,7 @@ export default async function DashboardPage() {
               <span className="absolute left-0 top-0 h-full w-1.5 bg-gradient-to-b from-[var(--color-accent)] to-indigo-400" />
               <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--color-accent)]">
                 <span aria-hidden>✦</span>
-                Daily briefing — what&rsquo;s driving you this week
+                Daily briefing: what&rsquo;s driving you this week
               </h2>
               <p className="mt-2 text-[15px] leading-relaxed text-[var(--color-ink)]/90">
                 {data.briefing.text}
@@ -98,7 +98,7 @@ export default async function DashboardPage() {
             Ask Helix <span className="gradient-text">why</span>
           </h2>
           <p className="mb-4 text-sm text-[var(--color-muted)]">
-            Trace the causal chain behind what you feel — and the one thing to do about it.
+            Trace the causal chain behind what you feel, and the one thing to do about it.
           </p>
           <DashboardClient />
         </section>

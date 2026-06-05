@@ -1,6 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  themeColor: "#0d9488",
+};
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Helix Health — Every app shows you what. Helix shows you why.",
+  title: "Helix Health: Every app shows you what. Helix shows you why.",
   description:
     "An AI health-intelligence layer that connects your signals into a causal model and answers why.",
 };
