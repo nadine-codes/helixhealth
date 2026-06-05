@@ -123,3 +123,22 @@ create policy "bloodwork owner rw" on storage.objects
   for all to authenticated
   using (bucket_id = 'bloodwork' and owner = auth.uid())
   with check (bucket_id = 'bloodwork' and owner = auth.uid());
+
+-- ---------------------------------------------------------------------------
+-- Grants (Supabase API roles). service_role bypasses RLS but still needs grants.
+-- ---------------------------------------------------------------------------
+grant usage on schema public to anon, authenticated, service_role;
+
+grant all on all tables in schema public to service_role;
+grant all on all sequences in schema public to service_role;
+
+grant select, insert, update, delete on
+  public.signals, public.interventions, public.insights, public.documents
+  to authenticated;
+grant select on public.priors to anon, authenticated;
+
+-- keep future tables accessible
+alter default privileges in schema public
+  grant all on tables to service_role;
+alter default privileges in schema public
+  grant all on sequences to service_role;
