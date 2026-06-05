@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { enterDemo, sendMagicLink } from "./actions";
+import { enterDemo } from "./actions";
 
 export default async function LoginPage({
   searchParams,
@@ -43,33 +43,6 @@ export default async function LoginPage({
             One click into Jane Doe&rsquo;s populated account.
           </p>
 
-          <div className="my-5 flex items-center gap-3 text-xs text-[var(--color-muted)]">
-            <div className="h-px flex-1 bg-[var(--color-line)]" />
-            or use a magic link
-            <div className="h-px flex-1 bg-[var(--color-line)]" />
-          </div>
-
-          <form action={sendMagicLink} className="flex gap-2">
-            <input
-              name="email"
-              type="email"
-              required
-              placeholder="you@example.com"
-              className="flex-1 rounded-xl border border-[var(--color-line)] bg-white px-3 py-2.5 text-sm outline-none focus:border-[var(--color-accent)]"
-            />
-            <button
-              type="submit"
-              className="rounded-xl border border-[var(--color-line)] px-4 py-2.5 text-sm font-medium hover:bg-slate-50"
-            >
-              Send
-            </button>
-          </form>
-
-          {sp.sent && (
-            <p className="mt-3 text-center text-sm text-[var(--color-accent)]">
-              Check your inbox for a sign-in link.
-            </p>
-          )}
           {sp.error && (
             <p className="mt-3 text-center text-sm text-rose-600">{sp.error}</p>
           )}
