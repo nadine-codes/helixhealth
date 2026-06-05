@@ -41,7 +41,7 @@ export function AskWhy({
         <button
           type="submit"
           disabled={loading || !value.trim()}
-          className="rounded-2xl bg-[var(--color-accent)] px-6 py-3.5 font-medium text-white shadow-sm transition hover:brightness-105 disabled:opacity-50"
+          className="rounded-2xl bg-gradient-to-r from-[var(--color-accent)] to-indigo-500 px-6 py-3.5 font-medium text-white shadow-[0_10px_28px_-12px_rgba(13,148,136,0.75)] transition hover:brightness-110 disabled:opacity-50"
         >
           {loading ? "Reasoning…" : "Ask Why"}
         </button>

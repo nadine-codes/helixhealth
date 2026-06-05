@@ -25,12 +25,34 @@ body {
 
 body {
   background:
-    radial-gradient(1200px 600px at 80% -10%, #e9fbf6 0%, transparent 55%),
-    radial-gradient(900px 500px at -10% 10%, #eef2ff 0%, transparent 50%),
+    radial-gradient(1100px 620px at 82% -12%, #d9f7ef 0%, transparent 55%),
+    radial-gradient(1000px 560px at -12% 4%, #e7ecff 0%, transparent 52%),
+    radial-gradient(700px 500px at 50% 110%, #f3e9ff 0%, transparent 60%),
     var(--background);
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
+}
+
+/* faint dot grid for depth */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse at 50% 0%, black, transparent 75%);
+  z-index: -1;
+}
+
+.gradient-text {
+  background: linear-gradient(100deg, #0f766e 0%, #0d9488 40%, #6366f1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Signal-type accent colors (shared by tiles + graph nodes) */
@@ -63,12 +85,34 @@ body {
 }
 
 .card {
-  background: var(--color-surface);
+  background: linear-gradient(180deg, #ffffff 0%, #fdfdff 100%);
   border: 1px solid var(--color-line);
-  border-radius: 1rem;
+  border-radius: 1.1rem;
   box-shadow:
     0 1px 2px rgba(15, 23, 42, 0.04),
-    0 8px 24px -16px rgba(15, 23, 42, 0.16);
+    0 10px 30px -18px rgba(15, 23, 42, 0.22);
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--type, var(--color-accent)) 45%, var(--color-line));
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.05),
+    0 18px 40px -22px rgba(13, 148, 136, 0.4);
+}
+
+/* a thin type-colored accent strip at the top of a tile */
+.tile-accent {
+  position: relative;
+  overflow: hidden;
+}
+.tile-accent::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--type, var(--color-accent)), transparent 85%);
 }
 
 .glow-root {

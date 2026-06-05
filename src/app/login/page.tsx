@@ -13,14 +13,20 @@ export default async function LoginPage({
       <div className="w-full max-w-md">
         <div className="mb-8 text-center">
           <div className="inline-flex items-center gap-2 text-[var(--color-accent)] font-semibold tracking-tight">
-            <HelixMark />
+            <span className="grid h-9 w-9 place-items-center rounded-xl bg-[var(--color-accent-soft)] text-[var(--color-accent)] shadow-sm">
+              <HelixMark />
+            </span>
             <span className="text-xl">Helix Health</span>
           </div>
-          <h1 className="mt-6 text-2xl font-semibold tracking-tight">
-            Every app shows you <em className="not-italic text-[var(--color-muted)]">what</em>.
+          <h1 className="mt-7 text-3xl font-semibold leading-tight tracking-tight">
+            Every app shows you{" "}
+            <em className="not-italic text-[var(--color-muted)]">what</em>.
+            <br />
+            Helix shows you <span className="gradient-text">why</span>.
           </h1>
-          <p className="text-2xl font-semibold tracking-tight">
-            Helix shows you <span className="text-[var(--color-accent)]">why</span>.
+          <p className="mt-3 text-sm text-[var(--color-muted)]">
+            An AI health-intelligence layer that connects your signals into a causal
+            model — and the one action that matters.
           </p>
         </div>
 
@@ -28,7 +34,7 @@ export default async function LoginPage({
           <form action={enterDemo}>
             <button
               type="submit"
-              className="w-full rounded-xl bg-[var(--color-accent)] px-4 py-3 text-white font-medium shadow-sm transition hover:brightness-105 active:scale-[0.99]"
+              className="w-full rounded-xl bg-gradient-to-r from-[var(--color-accent)] to-indigo-500 px-4 py-3 text-white font-medium shadow-[0_8px_24px_-10px_rgba(13,148,136,0.7)] transition hover:brightness-110 active:scale-[0.99]"
             >
               Enter Demo →
             </button>

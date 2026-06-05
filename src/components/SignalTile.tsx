@@ -17,14 +17,14 @@ export function SignalTile({ signal }: { signal: EvidenceSignal }) {
     signal.trend === "up" ? "↑" : signal.trend === "down" ? "↓" : "→";
 
   return (
-    <div className={`t-${signal.type} card p-4`}>
+    <div className={`t-${signal.type} card card-hover tile-accent p-4`}>
       <div className="flex items-center justify-between">
         <span className="text-xs font-medium text-[var(--color-muted)]">
           {signal.name}
         </span>
         <span
           className="h-2 w-2 rounded-full"
-          style={{ background: "var(--type)" }}
+          style={{ background: "var(--type)", boxShadow: "0 0 0 3px color-mix(in srgb, var(--type) 18%, transparent)" }}
         />
       </div>
       <div className="mt-2 flex items-baseline gap-1.5">
