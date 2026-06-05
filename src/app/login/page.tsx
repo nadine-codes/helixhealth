@@ -25,8 +25,8 @@ export default async function LoginPage({
             Helix shows you <span className="gradient-text">why</span>.
           </h1>
           <p className="mt-3 text-sm text-[var(--color-muted)]">
-            An AI health-intelligence layer that connects your signals into a causal
-            model, and the one action that matters.
+            An AI health intelligence layer that connects your signals, uncovers
+            what&rsquo;s driving your health, and suggests the next best step.
           </p>
         </div>
 

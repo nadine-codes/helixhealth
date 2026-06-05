@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 const SITE_URL = "https://helixhealth.vercel.app";
 const OG_TITLE = "Helix Health: Every app shows you what. Helix shows you why.";
 const OG_DESCRIPTION =
-  "An AI health-intelligence layer that connects your signals into a causal model, and the one action that matters.";
+  "An AI health intelligence layer that connects your signals, uncovers what's driving your health, and suggests the next best step.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

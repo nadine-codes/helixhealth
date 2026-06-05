@@ -29,8 +29,8 @@ const svg = `<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http:/
   <text x="80" y="392" font-family="Helvetica, Arial, sans-serif" font-size="76" font-weight="700" fill="#ffffff">Helix shows you <tspan fill="#d9f7ef">why.</tspan></text>
 
   <!-- subtitle -->
-  <text x="82" y="470" font-family="Helvetica, Arial, sans-serif" font-size="32" fill="#e6e9ef" opacity="0.95">An AI health-intelligence layer that turns measurement into meaning,</text>
-  <text x="82" y="512" font-family="Helvetica, Arial, sans-serif" font-size="32" fill="#e6e9ef" opacity="0.95">and the one action that matters.</text>
+  <text x="82" y="470" font-family="Helvetica, Arial, sans-serif" font-size="30" fill="#e6e9ef" opacity="0.95">An AI health intelligence layer that connects your signals,</text>
+  <text x="82" y="510" font-family="Helvetica, Arial, sans-serif" font-size="30" fill="#e6e9ef" opacity="0.95">uncovers what's driving your health, and suggests the next best step.</text>
 </svg>`;
 
 async function main() {
