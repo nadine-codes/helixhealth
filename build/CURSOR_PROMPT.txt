@@ -1,0 +1,25 @@
+Build the Helix Health hackathon MVP in this repo.
+
+START by reading build/00-cursor-kickoff.md in full — it is the entry point. It
+contains the two locked decisions (Anthropic SDK direct; cascade-first
+visualization, then curated graph — do NOT use React Flow) and the 24-hour
+critical path. Then read, in this order:
+  - HELIX_HEALTH_MASTER_SPEC.md   (full architecture + the demo script in §19)
+  - build/02-seed-data-story-arc.md   (persona Jane Doe + the dataset — build this before the engine)
+  - build/01-priors-knowledge-base.md  (the 45 grounding relationships — seed verbatim)
+  - build/03-insight-engine-prompt-and-schema.md  (system prompt + emit_insight JSON contract)
+
+Then execute the 24-hour critical path in build/00-cursor-kickoff.md step by step.
+Work top-to-bottom. After each major step, summarize what you built and what you
+need from me (e.g. env vars).
+
+Hard constraints:
+- Anthropic SDK direct, server-side only. Model claude-opus-4-8 for reasoning.
+- Stack: Next.js 15 (App Router), TypeScript, Tailwind, Supabase, Vercel.
+- Force the emit_insight tool call and validate against the schema in doc 03.
+- Build the demo-chain test harness (step 5) as soon as the engine returns
+  anything, and verify the three demo answers against the sanity table at the
+  bottom of doc 00 before moving on.
+- Keep the medical-advice guardrails from the docs in both the prompt and the UI.
+
+Start with step 1 (scaffold + deploy). Ask me for credentials when you need them.

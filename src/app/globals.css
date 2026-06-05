@@ -1,26 +1,95 @@
 @import "tailwindcss";
 
+@theme {
+  --color-bg: #f7f8fa;
+  --color-surface: #ffffff;
+  --color-ink: #0f172a;
+  --color-muted: #64748b;
+  --color-line: #e6e9ef;
+  --color-accent: #0d9488;
+  --color-accent-soft: #ccfbf1;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f8fa;
+  --foreground: #0f172a;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(1200px 600px at 80% -10%, #e9fbf6 0%, transparent 55%),
+    radial-gradient(900px 500px at -10% 10%, #eef2ff 0%, transparent 50%),
+    var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Signal-type accent colors (shared by tiles + graph nodes) */
+.t-sleep {
+  --type: #6366f1;
+}
+.t-recovery {
+  --type: #10b981;
+}
+.t-physiology {
+  --type: #06b6d4;
+}
+.t-nutrition {
+  --type: #f59e0b;
+}
+.t-biomarker {
+  --type: #f43f5e;
+}
+.t-activity {
+  --type: #0ea5e9;
+}
+.t-intervention {
+  --type: #8b5cf6;
+}
+.t-cycle {
+  --type: #ec4899;
+}
+.t-symptom {
+  --type: #fb923c;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 1rem;
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 8px 24px -16px rgba(15, 23, 42, 0.16);
+}
+
+.glow-root {
+  box-shadow:
+    0 0 0 2px var(--type, var(--color-accent)),
+    0 0 32px -4px var(--type, var(--color-accent));
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 2px var(--type, var(--color-accent)),
+      0 0 26px -6px var(--type, var(--color-accent));
+  }
+  50% {
+    box-shadow:
+      0 0 0 3px var(--type, var(--color-accent)),
+      0 0 42px 0px var(--type, var(--color-accent));
+  }
+}
+.animate-glow {
+  animation: pulse-glow 2.6s ease-in-out infinite;
 }

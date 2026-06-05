@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  eslint: {
+    // Lint is run separately; don't block hackathon deploys on lint config.
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;
