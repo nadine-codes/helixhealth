@@ -1,5 +1,5 @@
 import "./_env";
-import { admin, ensureDemoUser } from "./lib";
+import { admin, ensureDemoUser, insertBiomarkerPanels, logGlp1 } from "./lib";
 import { PRIORS } from "@/lib/priors";
 import { SIGNAL_DEF_BY_KEY } from "@/lib/signals-catalog";
 import { generateTimeline, generateCycleTimeline } from "@/lib/seed-timeline";
@@ -90,7 +90,14 @@ async function main() {
   if (bErr) throw bErr;
   console.log("Seeded daily briefing.");
 
-  console.log("\nSeed complete. Demo state = no bloodwork uploaded, no GLP-1 logged.");
+  // --- pre-load richer demo state: bloodwork lab panels + GLP-1 intervention ---
+  // Idempotent: each helper clears its own prior rows before inserting.
+  await insertBiomarkerPanels(sb, userId);
+  console.log("Pre-loaded bloodwork lab panels (Feb + May, ferritin LOW).");
+  await logGlp1(sb, userId);
+  console.log("Pre-loaded GLP-1 intervention.");
+
+  console.log("\nSeed complete. Demo state = labs on file + GLP-1 active (pre-loaded).");
 }
 
 main().catch((e) => {
