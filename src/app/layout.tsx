@@ -16,10 +16,36 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://helixhealth.vercel.app";
+const OG_TITLE = "Helix Health: Every app shows you what. Helix shows you why.";
+const OG_DESCRIPTION =
+  "An AI health-intelligence layer that connects your signals into a causal model, and the one action that matters.";
+
 export const metadata: Metadata = {
-  title: "Helix Health: Every app shows you what. Helix shows you why.",
-  description:
-    "An AI health-intelligence layer that connects your signals into a causal model and answers why.",
+  metadataBase: new URL(SITE_URL),
+  title: OG_TITLE,
+  description: OG_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: "Helix Health",
+    title: OG_TITLE,
+    description: OG_DESCRIPTION,
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Helix Health: Every app shows you what. Helix shows you why.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: OG_TITLE,
+    description: OG_DESCRIPTION,
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({
