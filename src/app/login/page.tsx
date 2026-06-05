@@ -20,9 +20,9 @@ export default async function LoginPage({
           </div>
           <h1 className="mt-7 text-3xl font-semibold leading-tight tracking-tight">
             Every app shows you{" "}
-            <em className="not-italic text-[var(--color-muted)]">what</em>.
+            <em className="not-italic text-[var(--color-muted)]">what.</em>
             <br />
-            Helix shows you <span className="gradient-text">why</span>.
+            Helix shows you <span className="gradient-text">why.</span>
           </h1>
           <p className="mt-3 text-sm text-[var(--color-muted)]">
             An AI health intelligence layer that connects your signals, uncovers
