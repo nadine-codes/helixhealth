@@ -107,47 +107,40 @@ body::before {
     0 18px 40px -22px rgba(13, 148, 136, 0.4);
 }
 
-/* a thin type-colored accent strip at the top of a tile */
-.tile-accent {
-  position: relative;
-  overflow: hidden;
+/* type-colored accent along the top — inset shadow follows card corner radius */
+.card.tile-accent {
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 10px 30px -18px rgba(15, 23, 42, 0.22),
+    inset 0 4px 0 0 var(--type, var(--color-accent));
 }
-.tile-accent::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  border-top-left-radius: var(--card-radius);
-  border-top-right-radius: var(--card-radius);
-  background: linear-gradient(
-    90deg,
-    var(--type, var(--color-accent)) 0%,
-    color-mix(in srgb, var(--type, var(--color-accent)) 35%, transparent) 72%,
-    transparent 100%
-  );
+.card.tile-accent.card-hover:hover {
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.05),
+    0 18px 40px -22px rgba(13, 148, 136, 0.4),
+    inset 0 4px 0 0 var(--type, var(--color-accent));
 }
 
 /* left-edge accent for briefing-style cards */
-.card-accent-left {
+.card.card-accent-left {
   position: relative;
   overflow: hidden;
 }
-.card-accent-left::before {
+.card.card-accent-left::before {
   content: "";
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
-  width: 6px;
-  border-top-left-radius: var(--card-radius);
-  border-bottom-left-radius: var(--card-radius);
+  width: var(--card-radius);
   background: linear-gradient(
     to bottom,
     var(--color-accent) 0%,
     #818cf8 100%
   );
+  mask-image: linear-gradient(to right, black 25%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 25%, transparent 100%);
+  pointer-events: none;
 }
 
 .glow-root {
