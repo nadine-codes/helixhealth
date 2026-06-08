@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Insight } from "@/lib/types";
+import { fetchJson, errorMessage } from "@/lib/http";
 import { AskWhy } from "./AskWhy";
 import { InsightView } from "./InsightView";
 
@@ -19,13 +20,19 @@ export function DashboardClient() {
   async function ask(question: string) {
     setState({ kind: "loading", question });
     try {
-      const res = await fetch("/api/insight", {
+      const result = await fetchJson<{
+        insight: Insight;
+        cached: boolean;
+        error?: string;
+      }>("/api/insight", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question }),
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data?.error ?? "Request failed");
+      const { res, data } = result;
+      if (!res.ok || !data?.insight) {
+        throw new Error(errorMessage(result, "Request failed"));
+      }
       setState({ kind: "result", insight: data.insight, cached: data.cached });
       setTimeout(
         () => resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),

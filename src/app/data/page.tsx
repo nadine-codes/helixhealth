@@ -38,11 +38,6 @@ export default async function DataPage() {
         <div className="mt-6">
           <DataClient hasBloodwork={data.hasBloodwork} hasGlp1={data.hasGlp1} />
         </div>
-
-        <p className="mt-8 text-center text-xs text-[var(--color-muted)]">
-          Future vision: connect Oura, WHOOP, Apple Health & lab providers for
-          continuous signal ingestion.
-        </p>
       </main>
 
       <footer className="border-t border-[var(--color-line)] bg-white/70 py-3 text-center text-xs text-[var(--color-muted)]">

@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { fetchJson, errorMessage } from "@/lib/http";
 
 interface Extracted {
   name: string;
@@ -12,6 +13,85 @@ interface Extracted {
   reference_low: number | null;
   reference_high: number | null;
   flag: "low" | "high" | "in_range";
+}
+
+const CONNECT_SOURCES = [
+  {
+    id: "oura",
+    name: "Oura",
+    tagline: "Sleep, HRV, and recovery from your ring",
+    detail: "Nightly sleep stages, readiness, and resting heart rate, synced into your signal graph.",
+    accent: "#6366f1",
+  },
+  {
+    id: "whoop",
+    name: "WHOOP",
+    tagline: "Strain, recovery, and cardiovascular load",
+    detail: "Daily strain, recovery score, and HRV trends folded into causal reasoning.",
+    accent: "#0ea5e9",
+  },
+  {
+    id: "apple_health",
+    name: "Apple Health",
+    tagline: "Activity, sleep, and vitals from iPhone and Watch",
+    detail: "Steps, workouts, sleep, and heart metrics from your Apple ecosystem in one fabric.",
+    accent: "#f43f5e",
+  },
+  {
+    id: "lab_providers",
+    name: "Lab providers",
+    tagline: "Quest, Labcorp, and other portals",
+    detail: "Continuous biomarker sync from your lab portal instead of one-off PDF uploads.",
+    accent: "#10b981",
+  },
+] as const;
+
+function ConnectSourceCard({
+  name,
+  tagline,
+  detail,
+  accent,
+}: (typeof CONNECT_SOURCES)[number]) {
+  return (
+    <div className="card p-6">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <h2 className="text-lg font-semibold tracking-tight">{name}</h2>
+          <p className="mt-1 text-sm text-[var(--color-muted)]">{tagline}</p>
+        </div>
+        <span
+          className="shrink-0 rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-500"
+          style={{ background: `${accent}18` }}
+        >
+          Coming soon
+        </span>
+      </div>
+      <p className="mt-3 text-sm text-[var(--color-ink)]/75">{detail}</p>
+      <div className="mt-4 rounded-xl border border-[var(--color-line)] bg-slate-50/80 p-4">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <span
+              className="grid h-10 w-10 place-items-center rounded-xl text-sm font-bold text-white"
+              style={{ background: `linear-gradient(135deg, ${accent}, ${accent}99)` }}
+            >
+              {name.charAt(0)}
+            </span>
+            <div>
+              <p className="font-medium">{name}</p>
+              <p className="text-xs text-[var(--color-muted)]">OAuth sync not yet available</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            disabled
+            className="cursor-not-allowed rounded-xl border border-[var(--color-line)] bg-white px-4 py-2 text-sm font-medium text-slate-400"
+          >
+            Connect
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function DataClient({
@@ -36,9 +116,14 @@ export function DataClient({
     try {
       const fd = new FormData();
       fd.append("file", file);
-      const res = await fetch("/api/bloodwork", { method: "POST", body: fd });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data?.error ?? "Upload failed");
+      const result = await fetchJson<{ extracted: Extracted[]; error?: string }>(
+        "/api/bloodwork",
+        { method: "POST", body: fd }
+      );
+      const { res, data } = result;
+      if (!res.ok || !data?.extracted) {
+        throw new Error(errorMessage(result, "Upload failed"));
+      }
       setExtracted(data.extracted);
       router.refresh();
     } catch (e) {
@@ -52,7 +137,7 @@ export function DataClient({
     setLoggingGlp1(true);
     setError(null);
     try {
-      const res = await fetch("/api/intervention", {
+      const result = await fetchJson<{ error?: string }>("/api/intervention", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -62,8 +147,7 @@ export function DataClient({
           notes: "Started ~4 weeks ago to lose ~10 lbs.",
         }),
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data?.error ?? "Failed");
+      if (!result.res.ok) throw new Error(errorMessage(result, "Failed"));
       setGlp1Logged(true);
       router.refresh();
     } catch (e) {
@@ -216,6 +300,20 @@ export function DataClient({
       {error && (
         <p className="lg:col-span-2 text-sm text-rose-600">{error}</p>
       )}
+
+      <div className="lg:col-span-2">
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-muted)]">
+          Connect sources
+        </h2>
+        <p className="mt-1 text-sm text-[var(--color-muted)]">
+          Wearables and lab portals for continuous signal ingestion. Demo data is
+          pre-seeded; live OAuth sync ships post-hackathon.
+        </p>
+      </div>
+
+      {CONNECT_SOURCES.map((source) => (
+        <ConnectSourceCard key={source.id} {...source} />
+      ))}
     </div>
   );
 }

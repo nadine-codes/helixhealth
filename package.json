@@ -11,6 +11,7 @@
     "seed": "node --import tsx scripts/seed.ts",
     "harness": "node --import tsx scripts/harness.ts",
     "precache": "node --import tsx scripts/harness.ts --precache",
+    "precache:chips": "node --import tsx scripts/precache-chips.ts",
     "bloodwork:pdf": "node --import tsx scripts/make-bloodwork-pdf.ts",
     "icons": "node --import tsx scripts/make-icons.ts",
     "og": "node --import tsx scripts/make-og.ts"
