@@ -39,7 +39,7 @@ const CONNECT_SOURCES = [
   {
     id: "apple_health",
     name: "Apple Health",
-    logo: "/brands/apple-health.svg",
+    logo: "/brands/apple-health.png",
     tagline: "Activity, sleep, and vitals from iPhone and Watch",
     detail:
       "Steps, workouts, sleep, and heart metrics from your Apple ecosystem in one fabric.",
