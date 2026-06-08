@@ -30,7 +30,7 @@ const CONNECT_SOURCES = [
   {
     id: "whoop",
     name: "WHOOP",
-    logo: "/brands/whoop.svg",
+    logo: "/brands/whooplogo.jpeg",
     tagline: "Strain, recovery, and cardiovascular load",
     detail:
       "Daily strain, recovery score, and HRV trends folded into causal reasoning.",
