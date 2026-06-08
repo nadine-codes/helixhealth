@@ -29,7 +29,7 @@ export default async function DataPage() {
           </div>
           <Link
             href="/dashboard"
-            className="shrink-0 self-end rounded-xl border border-[var(--color-line)] bg-white px-4 py-2 text-sm font-medium hover:border-[var(--color-accent)]"
+            className="shrink-0 self-end rounded-xl border border-[var(--color-line)] bg-white/80 px-4 py-2 text-sm font-medium shadow-sm transition hover:-translate-y-0.5 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           >
             ← Back to dashboard
           </Link>
