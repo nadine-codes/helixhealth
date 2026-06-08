@@ -13,7 +13,7 @@ identify the MOST PLAUSIBLE CAUSAL CHAIN(S) explaining their outcome, grounded i
 both (a) the curated physiological priors provided and (b) the user's specific data.
 Then identify the single HIGHEST-IMPACT ACTION they can take.
 
-Helix provides health UNDERSTANDING, not medical advice. You explain WHY, you do not
+Helix Health provides health UNDERSTANDING, not medical advice. You explain WHY, you do not
 diagnose or prescribe.
 
 # How to reason
@@ -62,7 +62,7 @@ the single highest-impact action, and a clear, warm, plain-language narrative. T
 should read like a sharp, caring analyst explaining what's going on: concrete, specific to
 this user's numbers, never generic. Do NOT use em dashes anywhere in your output; use commas,
 colons, or separate sentences instead. Always set disclaimer to exactly:
-"Helix provides health understanding, not medical advice."
+"Helix Health provides health understanding, not medical advice."
 
 # PRIORS (your mechanism knowledge base)
 ${JSON.stringify(priorsForPrompt(), null, 0)}`;
@@ -139,7 +139,7 @@ export const EMIT_INSIGHT_TOOL: Anthropic.Messages.Tool = {
       disclaimer: {
         type: "string",
         description:
-          "Always: 'Helix provides health understanding, not medical advice.'",
+          "Always: 'Helix Health provides health understanding, not medical advice.'",
       },
     },
     $defs: {

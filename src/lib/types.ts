@@ -154,4 +154,4 @@ export interface Insight {
 }
 
 export const DISCLAIMER =
-  "Helix provides health understanding, not medical advice.";
+  "Helix Health provides health understanding, not medical advice.";

@@ -117,7 +117,8 @@ body::before {
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--type, var(--color-accent)), transparent 85%);
+  background: var(--type, var(--color-accent));
+  pointer-events: none;
 }
 
 .glow-root {

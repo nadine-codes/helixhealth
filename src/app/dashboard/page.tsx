@@ -66,7 +66,7 @@ export default async function DashboardPage() {
         {data.briefing && (
           <section className="mt-6 card overflow-hidden">
             <div className="relative p-5 pl-6">
-              <span className="absolute left-0 top-0 h-full w-1.5 bg-gradient-to-b from-[var(--color-accent)] to-indigo-400" />
+              <span className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-[var(--color-accent)] to-indigo-400" />
               <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--color-accent)]">
                 <span aria-hidden>✦</span>
                 Daily briefing: what&rsquo;s driving you this week
@@ -122,7 +122,7 @@ export default async function DashboardPage() {
       </main>
 
       <footer className="border-t border-[var(--color-line)] bg-white/70 py-3 text-center text-xs text-[var(--color-muted)]">
-        Helix provides health understanding, not medical advice.
+        Helix Health provides health understanding, not medical advice.
       </footer>
     </>
   );

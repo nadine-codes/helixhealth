@@ -49,7 +49,7 @@ export default async function LoginPage({
         </div>
 
         <p className="mt-6 text-center text-xs text-[var(--color-muted)]">
-          Helix provides health understanding, not medical advice.
+          Helix Health provides health understanding, not medical advice.
         </p>
         <p className="mt-2 text-center text-xs text-[var(--color-muted)]">
           <Link href="/" className="underline">

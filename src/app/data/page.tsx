@@ -41,7 +41,7 @@ export default async function DataPage() {
       </main>
 
       <footer className="border-t border-[var(--color-line)] bg-white/70 py-3 text-center text-xs text-[var(--color-muted)]">
-        Helix provides health understanding, not medical advice.
+        Helix Health provides health understanding, not medical advice.
       </footer>
     </>
   );
