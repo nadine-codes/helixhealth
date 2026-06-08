@@ -30,8 +30,8 @@ export default async function DashboardPage() {
     <>
       <AppHeader active="dashboard" />
       <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-8">
-        <div className="flex items-end justify-between">
-          <div>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div className="min-w-0">
             <h1 className="text-3xl font-semibold tracking-tight">
               Good afternoon, <span className="gradient-text">Jane</span>
             </h1>
@@ -56,7 +56,7 @@ export default async function DashboardPage() {
           </div>
           <Link
             href="/data"
-            className="rounded-xl border border-[var(--color-line)] bg-white/80 px-4 py-2 text-sm font-medium shadow-sm transition hover:-translate-y-0.5 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+            className="shrink-0 self-end rounded-xl border border-[var(--color-line)] bg-white/80 px-4 py-2 text-sm font-medium shadow-sm transition hover:-translate-y-0.5 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           >
             + Add data
           </Link>

@@ -20,8 +20,8 @@ export default async function DataPage() {
     <>
       <AppHeader active="data" />
       <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-8">
-        <div className="flex items-end justify-between">
-          <div>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div className="min-w-0">
             <h1 className="text-2xl font-semibold tracking-tight">Your data</h1>
             <p className="text-sm text-[var(--color-muted)]">
               Add evidence and watch Helix re-reason.
@@ -29,7 +29,7 @@ export default async function DataPage() {
           </div>
           <Link
             href="/dashboard"
-            className="rounded-xl border border-[var(--color-line)] bg-white px-4 py-2 text-sm font-medium hover:border-[var(--color-accent)]"
+            className="shrink-0 self-end rounded-xl border border-[var(--color-line)] bg-white px-4 py-2 text-sm font-medium hover:border-[var(--color-accent)]"
           >
             ← Back to dashboard
           </Link>
