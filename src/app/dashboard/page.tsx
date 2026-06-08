@@ -64,9 +64,8 @@ export default async function DashboardPage() {
 
         {/* Daily briefing */}
         {data.briefing && (
-          <section className="mt-6 card overflow-hidden">
-            <div className="relative p-5 pl-6">
-              <span className="absolute left-0 top-0 h-full w-1.5 bg-gradient-to-b from-[var(--color-accent)] to-indigo-400" />
+          <section className="card-accent-left mt-6 card">
+            <div className="p-5 pl-6">
               <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--color-accent)]">
                 <span aria-hidden>✦</span>
                 Daily briefing: what&rsquo;s driving you this week
@@ -89,7 +88,7 @@ export default async function DashboardPage() {
                       <p className="text-[11px] font-semibold uppercase tracking-wide text-[var(--color-muted)]">
                         Root driver
                       </p>
-                      <p className="mt-1 text-sm font-medium text-[var(--color-ink)]">
+                      <p className="mt-1 ml-auto max-w-[4.5rem] text-sm font-medium leading-snug text-[var(--color-ink)] sm:max-w-none">
                         {data.briefing.root_driver}
                       </p>
                     </div>

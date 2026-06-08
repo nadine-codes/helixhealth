@@ -89,9 +89,10 @@ body::before {
 }
 
 .card {
+  --card-radius: 1.1rem;
   background: linear-gradient(180deg, #ffffff 0%, #fdfdff 100%);
   border: 1px solid var(--color-line);
-  border-radius: 1.1rem;
+  border-radius: var(--card-radius);
   box-shadow:
     0 1px 2px rgba(15, 23, 42, 0.04),
     0 10px 30px -18px rgba(15, 23, 42, 0.22);
@@ -114,9 +115,39 @@ body::before {
 .tile-accent::before {
   content: "";
   position: absolute;
-  inset: 0 0 auto 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--type, var(--color-accent)), transparent 85%);
+  border-top-left-radius: var(--card-radius);
+  border-top-right-radius: var(--card-radius);
+  background: linear-gradient(
+    90deg,
+    var(--type, var(--color-accent)) 0%,
+    color-mix(in srgb, var(--type, var(--color-accent)) 35%, transparent) 72%,
+    transparent 100%
+  );
+}
+
+/* left-edge accent for briefing-style cards */
+.card-accent-left {
+  position: relative;
+  overflow: hidden;
+}
+.card-accent-left::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 6px;
+  border-top-left-radius: var(--card-radius);
+  border-bottom-left-radius: var(--card-radius);
+  background: linear-gradient(
+    to bottom,
+    var(--color-accent) 0%,
+    #818cf8 100%
+  );
 }
 
 .glow-root {

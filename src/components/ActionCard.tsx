@@ -30,7 +30,7 @@ export function ActionCard({ action }: { action: HighestImpactAction }) {
       transition={{ delay: 0.4, duration: 0.5 }}
       className="card overflow-hidden"
     >
-      <div className="bg-[var(--color-accent)] px-5 py-2.5 text-xs font-semibold uppercase tracking-wide text-white">
+      <div className="rounded-t-[var(--card-radius)] bg-[var(--color-accent)] px-5 py-2.5 text-xs font-semibold uppercase tracking-wide text-white">
         Your highest-impact action right now
       </div>
       <div className="p-5">
