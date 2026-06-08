@@ -122,10 +122,10 @@ body::before {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    color-mix(in srgb, var(--type, var(--color-accent)) 45%, transparent) 10%,
-    var(--type, var(--color-accent)) 22%,
-    color-mix(in srgb, var(--type, var(--color-accent)) 35%, transparent) 62%,
-    transparent 88%
+    color-mix(in srgb, var(--type, var(--color-accent)) 30%, transparent) 18%,
+    var(--type, var(--color-accent)) 50%,
+    color-mix(in srgb, var(--type, var(--color-accent)) 30%, transparent) 82%,
+    transparent 100%
   );
   pointer-events: none;
 }
