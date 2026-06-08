@@ -79,7 +79,7 @@ export default async function DashboardPage() {
                     <p className="text-[11px] font-semibold uppercase tracking-wide text-[var(--color-accent)]">
                       Top action
                     </p>
-                    <p className="mt-1 text-sm font-medium text-[var(--color-ink)]">
+                    <p className="mt-1 max-w-[6.5rem] text-sm font-medium leading-snug text-[var(--color-ink)] sm:max-w-none">
                       {data.briefing.top_action}
                     </p>
                   </div>
