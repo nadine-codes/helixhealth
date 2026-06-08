@@ -75,8 +75,13 @@ export default async function DashboardPage() {
                 {data.briefing.text}
               </p>
               {data.briefing.top_action && (
-                <div className="mt-3 inline-flex items-center gap-2 rounded-lg bg-[var(--color-accent-soft)]/60 px-3 py-1.5 text-sm font-medium text-[var(--color-accent)]">
-                  <span aria-hidden>→</span> {data.briefing.top_action}
+                <div className="mt-4 rounded-xl border border-[var(--color-line)] bg-slate-50/60 px-4 py-3">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[var(--color-accent)]">
+                    Top action
+                  </p>
+                  <p className="mt-1 text-sm font-medium text-[var(--color-ink)]">
+                    {data.briefing.top_action}
+                  </p>
                 </div>
               )}
             </div>
