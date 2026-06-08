@@ -21,7 +21,7 @@ const CONNECT_SOURCES = [
   {
     id: "oura",
     name: "Oura",
-    logo: "/brands/oura.svg",
+    logo: "/brands/ouralogo.jpeg",
     tagline: "Sleep, HRV, and recovery from your ring",
     detail:
       "Nightly sleep stages, readiness, and resting heart rate, synced into your signal graph.",
