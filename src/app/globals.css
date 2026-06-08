@@ -119,12 +119,19 @@ body::before {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(
+  background: var(--type, var(--color-accent));
+  mask-image: linear-gradient(
     90deg,
     transparent 0%,
-    color-mix(in srgb, var(--type, var(--color-accent)) 30%, transparent) 18%,
-    var(--type, var(--color-accent)) 50%,
-    color-mix(in srgb, var(--type, var(--color-accent)) 30%, transparent) 82%,
+    black 26%,
+    black 74%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 26%,
+    black 74%,
     transparent 100%
   );
   pointer-events: none;
