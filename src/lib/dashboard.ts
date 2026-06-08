@@ -9,7 +9,7 @@ import {
 } from "@/lib/data";
 
 export interface DashboardData {
-  briefing: { text: string; top_action?: string } | null;
+  briefing: { text: string; top_action?: string; root_driver?: string } | null;
   tiles: EvidenceSignal[];
   biomarkers: EvidenceSignal[];
   interventions: InterventionRow[];
@@ -49,7 +49,7 @@ export async function getDashboardData(
   const biomarkers = packet.signals.filter((s) => s.type === "biomarker" && SIGNAL_DEF_BY_KEY[s.key] === undefined);
 
   const briefingPayload = briefingRows.data?.[0]?.payload as
-    | { text: string; top_action?: string }
+    | { text: string; top_action?: string; root_driver?: string }
     | undefined;
 
   return {

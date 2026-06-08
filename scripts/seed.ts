@@ -83,7 +83,11 @@ async function main() {
     kind: "briefing",
     question: null,
     cache_key: "daily_briefing",
-    payload: { text: BRIEFING, top_action: "Stabilize your sleep window" },
+    payload: {
+      text: BRIEFING,
+      top_action: "Stabilize your sleep window",
+      root_driver: "Sleep consistency",
+    },
     narrative: BRIEFING,
     confidence: 0.8,
   });
