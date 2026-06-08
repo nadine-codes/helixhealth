@@ -78,16 +78,18 @@ function ConnectSourceCard({
       <h2 className="text-lg font-semibold tracking-tight">{name}</h2>
       <p className="mt-1 text-sm text-[var(--color-muted)]">{tagline}</p>
       <p className="mt-3 text-sm text-[var(--color-ink)]/75">{detail}</p>
-      <div className="mt-4 rounded-xl border border-[var(--color-line)] bg-slate-50/80 p-4">
+      <div className="mt-4 rounded-xl border border-slate-200 bg-slate-100/70 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0">
-            <img
-              src={logo}
-              alt=""
-              width={40}
-              height={40}
-              className="h-10 w-10 shrink-0 rounded-xl"
-            />
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-slate-200 bg-white shadow-sm ring-1 ring-slate-900/[0.06]">
+              <img
+                src={logo}
+                alt=""
+                width={36}
+                height={36}
+                className="h-9 w-9 rounded-lg object-contain"
+              />
+            </div>
             <div className="min-w-0">
               <p className="font-medium">{name}</p>
               <p
@@ -105,7 +107,7 @@ function ConnectSourceCard({
             </div>
           </div>
           {status === "connected" ? (
-            <span className="shrink-0 rounded-full bg-[var(--color-accent-soft)] px-3 py-1 text-sm font-medium text-[var(--color-accent)]">
+            <span className="inline-flex shrink-0 items-center whitespace-nowrap rounded-full bg-[var(--color-accent-soft)] px-3 py-1 text-sm font-medium text-[var(--color-accent)]">
               Connected ✓
             </span>
           ) : (
@@ -307,20 +309,20 @@ export function DataClient({
         </p>
 
         <div className="mt-4 rounded-xl border border-[var(--color-line)] p-4">
-          <div className="flex items-center justify-between">
-            <div>
+          <div className="flex items-center justify-between gap-3">
+            <div className="min-w-0">
               <p className="font-medium">Semaglutide (GLP-1)</p>
               <p className="text-xs text-[var(--color-muted)]">Started 4 weeks ago (May 7, 2026)</p>
             </div>
             {glp1Logged ? (
-              <span className="rounded-full bg-[var(--color-accent-soft)] px-3 py-1 text-sm font-medium text-[var(--color-accent)]">
+              <span className="inline-flex shrink-0 items-center whitespace-nowrap rounded-full bg-[var(--color-accent-soft)] px-3 py-1 text-sm font-medium text-[var(--color-accent)]">
                 Logged ✓
               </span>
             ) : (
               <button
                 onClick={logGlp1}
                 disabled={loggingGlp1}
-                className="rounded-xl bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
+                className="shrink-0 whitespace-nowrap rounded-xl bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
               >
                 {loggingGlp1 ? "Logging…" : "Log GLP-1"}
               </button>
