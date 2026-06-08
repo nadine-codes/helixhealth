@@ -107,53 +107,17 @@ body::before {
     0 18px 40px -22px rgba(13, 148, 136, 0.4);
 }
 
-/* type-colored accent along the top — fades out to the right */
-.card.tile-accent {
+/* a thin type-colored accent strip at the top of a tile */
+.tile-accent {
   position: relative;
   overflow: hidden;
 }
-.card.tile-accent::before {
+.tile-accent::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  inset: 0 0 auto 0;
   height: 3px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    color-mix(in srgb, var(--type, var(--color-accent)) 8%, transparent) 14%,
-    color-mix(in srgb, var(--type, var(--color-accent)) 35%, transparent) 32%,
-    color-mix(in srgb, var(--type, var(--color-accent)) 75%, transparent) 44%,
-    var(--type, var(--color-accent)) 50%,
-    color-mix(in srgb, var(--type, var(--color-accent)) 75%, transparent) 56%,
-    color-mix(in srgb, var(--type, var(--color-accent)) 35%, transparent) 68%,
-    color-mix(in srgb, var(--type, var(--color-accent)) 8%, transparent) 86%,
-    transparent 100%
-  );
-  pointer-events: none;
-}
-
-/* left-edge accent for briefing-style cards */
-.card.card-accent-left {
-  position: relative;
-  overflow: hidden;
-}
-.card.card-accent-left::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: var(--card-radius);
-  background: linear-gradient(
-    to bottom,
-    var(--color-accent) 0%,
-    #818cf8 100%
-  );
-  mask-image: linear-gradient(to right, black 25%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, black 25%, transparent 100%);
-  pointer-events: none;
+  background: linear-gradient(90deg, var(--type, var(--color-accent)), transparent 85%);
 }
 
 .glow-root {

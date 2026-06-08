@@ -64,8 +64,9 @@ export default async function DashboardPage() {
 
         {/* Daily briefing */}
         {data.briefing && (
-          <section className="card-accent-left mt-6 card">
-            <div className="p-5 pl-6">
+          <section className="mt-6 card overflow-hidden">
+            <div className="relative p-5 pl-6">
+              <span className="absolute left-0 top-0 h-full w-1.5 bg-gradient-to-b from-[var(--color-accent)] to-indigo-400" />
               <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--color-accent)]">
                 <span aria-hidden>✦</span>
                 Daily briefing: what&rsquo;s driving you this week
