@@ -78,7 +78,7 @@ function ConnectSourceCard({
       <h2 className="text-lg font-semibold tracking-tight">{name}</h2>
       <p className="mt-1 text-sm text-[var(--color-muted)]">{tagline}</p>
       <p className="mt-3 text-sm text-[var(--color-ink)]/75">{detail}</p>
-      <div className="mt-4 rounded-xl bg-[#d9f7ef] p-4">
+      <div className="mt-4 rounded-xl bg-[#f3faf8] p-4">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0">
             <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white shadow-sm">
