@@ -140,9 +140,11 @@ export function DataClient({
   const [dragOver, setDragOver] = useState(false);
   const [glp1Logged, setGlp1Logged] = useState(hasGlp1);
   const [loggingGlp1, setLoggingGlp1] = useState(false);
+  // Oura (sleep/recovery/HRV) and Apple Health (activity/steps) already feed the
+  // dashboard's seeded wearable signals, so they start connected.
   const [connectStatus, setConnectStatus] = useState<
     Record<string, ConnectStatus>
-  >({});
+  >({ oura: "connected", apple_health: "connected" });
   const inputRef = useRef<HTMLInputElement>(null);
 
   async function connectSource(id: string) {
