@@ -81,13 +81,13 @@ function ConnectSourceCard({
       <div className="mt-4 rounded-xl bg-[#f3faf8] p-4">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0">
-            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white shadow-sm">
+            <div className="h-11 w-11 shrink-0 overflow-hidden rounded-xl shadow-sm">
               <img
                 src={logo}
                 alt=""
-                width={36}
-                height={36}
-                className="h-9 w-9 rounded-lg object-contain"
+                width={44}
+                height={44}
+                className="h-full w-full object-cover"
               />
             </div>
             <div className="min-w-0">
