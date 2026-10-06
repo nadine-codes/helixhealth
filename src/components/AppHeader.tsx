@@ -8,7 +8,7 @@ export function AppHeader({ active }: { active: "dashboard" | "data" }) {
         <Link href="/dashboard" className="flex items-center gap-2.5 font-semibold tracking-tight text-[var(--color-accent)]">
           {/* same mark as public/icon.svg (favicon), scaled for the nav */}
           <svg width="32" height="32" viewBox="0 0 512 512" fill="none" aria-hidden className="shrink-0">
-            <rect width="512" height="512" rx="171" fill="var(--color-accent-soft)" />
+            <rect width="512" height="512" rx="224" fill="var(--color-accent-soft)" />
             <g transform="translate(99.33 99.33) scale(13.056)" stroke="currentColor" strokeLinecap="round">
               <path d="M7 3c0 4 10 5 10 9s-10 5-10 9" strokeWidth="1.8" />
               <path d="M17 3c0 4-10 5-10 9s10 5 10 9" strokeWidth="1.8" opacity="0.5" />

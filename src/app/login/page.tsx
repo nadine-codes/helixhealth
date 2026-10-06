@@ -13,7 +13,7 @@ export default async function LoginPage({
       <div className="w-full max-w-md">
         <div className="mb-8 text-center">
           <div className="inline-flex items-center gap-2 text-[var(--color-accent)] font-semibold tracking-tight">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-[var(--color-accent-soft)] text-[var(--color-accent)] shadow-sm">
+            <span className="grid h-9 w-9 place-items-center rounded-[16px] bg-[var(--color-accent-soft)] text-[var(--color-accent)] shadow-sm">
               <HelixMark />
             </span>
             <span className="text-xl">Helix Health</span>
