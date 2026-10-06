@@ -10,17 +10,20 @@ import {
 import { assembleEvidence } from "@/lib/engine/evidence";
 import { runInsight } from "@/lib/engine/insight";
 import { isSuggestedQuestion } from "@/lib/suggested-questions";
+import { redactIdentifiers } from "@/lib/redact";
 
 export const maxDuration = 60;
 
 export async function POST(req: Request) {
   try {
     const body = await req.json().catch(() => ({}));
-    const question: string | undefined = body?.question;
+    const rawQuestion: unknown = body?.question;
     const useCache: boolean = body?.useCache ?? true;
-    if (!question || typeof question !== "string") {
+    if (!rawQuestion || typeof rawQuestion !== "string") {
       return NextResponse.json({ error: "Missing question" }, { status: 400 });
     }
+    // The browser already redacts; repeat it here for direct API calls.
+    const question = redactIdentifiers(rawQuestion).text;
 
     const sb = await createClient();
     const {

@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Insight } from "@/lib/types";
 import { fetchJson, errorMessage } from "@/lib/http";
+import { redactIdentifiers } from "@/lib/redact";
 import { AskWhy } from "./AskWhy";
 import { InsightView } from "./InsightView";
 
@@ -11,13 +12,15 @@ type State =
   | { kind: "idle" }
   | { kind: "loading"; question: string }
   | { kind: "error"; message: string }
-  | { kind: "result"; insight: Insight; cached: boolean };
+  | { kind: "result"; insight: Insight; cached: boolean; removed: string[] };
 
 export function DashboardClient() {
   const [state, setState] = useState<State>({ kind: "idle" });
   const resultRef = useRef<HTMLDivElement>(null);
 
-  async function ask(question: string) {
+  async function ask(raw: string) {
+    // Strip identifiers in the browser so they never reach the server or Claude.
+    const { text: question, removed } = redactIdentifiers(raw);
     setState({ kind: "loading", question });
     try {
       const result = await fetchJson<{
@@ -33,7 +36,7 @@ export function DashboardClient() {
       if (!res.ok || !data?.insight) {
         throw new Error(errorMessage(result, "Request failed"));
       }
-      setState({ kind: "result", insight: data.insight, cached: data.cached });
+      setState({ kind: "result", insight: data.insight, cached: data.cached, removed });
       setTimeout(
         () => resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
         80
@@ -94,6 +97,12 @@ export function DashboardClient() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
             >
+              {state.removed.length > 0 && (
+                <p className="mb-3 text-xs text-[var(--color-muted)]">
+                  For your privacy, we removed {listOf(state.removed)} before
+                  sending your question.
+                </p>
+              )}
               <InsightView insight={state.insight} cached={state.cached} />
             </motion.div>
           )}
@@ -101,4 +110,10 @@ export function DashboardClient() {
       </div>
     </div>
   );
+}
+
+function listOf(items: string[]) {
+  const words = items.map((i) => `${/^[aeiou]/.test(i) ? "an" : "a"} ${i}`);
+  if (words.length < 2) return words.join("");
+  return `${words.slice(0, -1).join(", ")} and ${words[words.length - 1]}`;
 }

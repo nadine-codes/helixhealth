@@ -114,7 +114,7 @@ export default async function DashboardPage() {
             Ask Helix <span className="gradient-text">why</span>
           </h2>
           <p className="mb-4 text-sm text-[var(--color-muted)]">
-            Trace the causal chain behind what you feel, and the one thing to do about it.
+            You&rsquo;re exploring as Jane. Ask what&rsquo;s behind how she feels, and get the one thing to do about it.
           </p>
           <DashboardClient />
         </section>
