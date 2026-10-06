@@ -17,7 +17,7 @@ export function SignalTile({ signal }: { signal: EvidenceSignal }) {
     signal.trend === "up" ? "↑" : signal.trend === "down" ? "↓" : "→";
 
   return (
-    <div className={`t-${signal.type} card card-hover tile-accent p-4`}>
+    <div className={`t-${signal.type} card card-hover p-4`}>
       <div className="flex items-center justify-between">
         <span className="text-xs font-medium text-[var(--color-muted)]">
           {signal.name}
@@ -34,7 +34,7 @@ export function SignalTile({ signal }: { signal: EvidenceSignal }) {
         <span className="text-xs text-[var(--color-muted)]">{signal.unit}</span>
       </div>
       <div className="mt-1 flex items-center gap-1.5 text-xs">
-        <span className={isBad ? "text-rose-600" : "text-emerald-600"}>
+        <span className={isBad ? "text-rose-600" : "text-emerald-700"}>
           {arrow} {signal.pct_change != null ? `${Math.abs(signal.pct_change)}%` : ""}
         </span>
         {signal.status === "low" && (

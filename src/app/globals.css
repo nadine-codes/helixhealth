@@ -4,7 +4,7 @@
   --color-bg: #f7f8fa;
   --color-surface: #ffffff;
   --color-ink: #0f172a;
-  --color-muted: #64748b;
+  --color-muted: #5b6b80;
   --color-line: #e6e9ef;
   --color-accent: #0d9488;
   --color-accent-soft: #ccfbf1;
@@ -90,35 +90,55 @@ body::before {
 
 .card {
   --card-radius: 1.1rem;
-  background: linear-gradient(180deg, #ffffff 0%, #fdfdff 100%);
-  border: 1px solid var(--color-line);
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.06);
   border-radius: var(--card-radius);
+  /* layered, tight shadows: crisp lift instead of a blurry glow */
   box-shadow:
-    0 1px 2px rgba(15, 23, 42, 0.04),
-    0 10px 30px -18px rgba(15, 23, 42, 0.22);
+    0 0.6px 0.6px -1.25px rgba(15, 23, 42, 0.18),
+    0 2.3px 2.3px -2.5px rgba(15, 23, 42, 0.16),
+    0 10px 10px -3.75px rgba(15, 23, 42, 0.06),
+    0 24px 32px -16px rgba(15, 23, 42, 0.08);
   transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
 }
 
 .card-hover:hover {
   transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--type, var(--color-accent)) 45%, var(--color-line));
+  border-color: color-mix(in srgb, var(--type, var(--color-accent)) 45%, rgba(15, 23, 42, 0.06));
   box-shadow:
-    0 1px 2px rgba(15, 23, 42, 0.05),
-    0 18px 40px -22px rgba(13, 148, 136, 0.4);
+    0 0.6px 0.6px -1.25px rgba(15, 23, 42, 0.18),
+    0 2.3px 2.3px -2.5px rgba(15, 23, 42, 0.16),
+    0 14px 14px -4px rgba(15, 23, 42, 0.08),
+    0 32px 40px -18px rgba(15, 23, 42, 0.14);
 }
 
-/* a thin type-colored accent strip at the top of a tile */
-.tile-accent {
-  position: relative;
-  overflow: hidden;
+/* tinted status pill with a layered drop shadow */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  background: var(--pill-bg, #ffffff);
+  padding: 0.25rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--pill-fg, var(--color-ink));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--pill-fg, #0f172a) 12%, transparent),
+    0 0.6px 0.6px -1.25px rgba(15, 23, 42, 0.18),
+    0 2.3px 2.3px -2.5px rgba(15, 23, 42, 0.16),
+    0 8px 10px -4px rgba(15, 23, 42, 0.06);
 }
-.tile-accent::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 3px;
-  background: var(--type, var(--color-accent));
-  pointer-events: none;
+.pill-pink {
+  --pill-bg: #fdf2f8;
+  --pill-fg: #be185d;
+}
+.pill-violet {
+  --pill-bg: #f5f3ff;
+  --pill-fg: #6d28d9;
+}
+.pill-rose {
+  --pill-bg: #fff1f2;
+  --pill-fg: #be123c;
 }
 
 .glow-root {

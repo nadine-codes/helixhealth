@@ -1,0 +1,10 @@
+import { chromium } from 'playwright-core';
+const [base, out] = process.argv.slice(2);
+const b = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
+const p = await b.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 2 });
+await p.goto(base + '/login', { waitUntil: 'networkidle', timeout: 120000 });
+await p.click('text=Enter Demo', { force: true });
+await p.waitForURL(/dashboard/, { timeout: 120000 }); await p.waitForLoadState('networkidle');
+await p.addStyleTag({ content: 'nextjs-portal{display:none!important}' }); await p.waitForTimeout(3000);
+await p.goto(base + '/data', { waitUntil: 'networkidle' }); await p.addStyleTag({ content: 'nextjs-portal{display:none!important}' }); await p.waitForTimeout(3000); await p.screenshot({ path: out });
+await b.close();

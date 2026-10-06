@@ -38,17 +38,17 @@ export default async function DashboardPage() {
             <p className="mt-1 flex flex-wrap items-center gap-2 text-sm text-[var(--color-muted)]">
               <span>As of June 4, 2026</span>
               {data.cyclePhase && (
-                <span className="rounded-full bg-pink-50 px-2 py-0.5 text-xs font-medium text-pink-600">
+                <span className="pill pill-pink">
                   {phaseLabel[data.cyclePhase] ?? data.cyclePhase} phase
                 </span>
               )}
               {data.hasGlp1 && (
-                <span className="rounded-full bg-violet-50 px-2 py-0.5 text-xs font-medium text-violet-600">
+                <span className="pill pill-violet">
                   GLP-1 active
                 </span>
               )}
               {data.hasBloodwork && (
-                <span className="rounded-full bg-rose-50 px-2 py-0.5 text-xs font-medium text-rose-600">
+                <span className="pill pill-rose">
                   Labs on file
                 </span>
               )}
@@ -56,7 +56,7 @@ export default async function DashboardPage() {
           </div>
           <Link
             href="/data"
-            className="shrink-0 self-end rounded-xl border border-[var(--color-line)] bg-white/80 px-4 py-2 text-sm font-medium shadow-sm transition hover:-translate-y-0.5 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+            className="shrink-0 self-end rounded-xl bg-white px-4 py-2 text-sm font-medium shadow-[0_0_0_1px_rgba(15,23,42,0.06),0_0.6px_0.6px_-1.25px_rgba(15,23,42,0.18),0_2.3px_2.3px_-2.5px_rgba(15,23,42,0.16),0_8px_10px_-4px_rgba(15,23,42,0.06)] transition hover:-translate-y-0.5 hover:text-[var(--color-accent)]"
           >
             + Add data
           </Link>
@@ -65,8 +65,7 @@ export default async function DashboardPage() {
         {/* Daily briefing */}
         {data.briefing && (
           <section className="mt-6 card overflow-hidden">
-            <div className="relative p-5 pl-6">
-              <span className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-[var(--color-accent)] to-indigo-400" />
+            <div className="p-6">
               <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--color-accent)]">
                 <span aria-hidden>✦</span>
                 Daily briefing: what&rsquo;s driving you this week

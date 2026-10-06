@@ -20,7 +20,7 @@ function TrendArrow({ trend }: { trend?: InsightNode["trend"] }) {
   return trend === "up" ? (
     <span className="text-rose-500">↑</span>
   ) : (
-    <span className="text-emerald-600">↓</span>
+    <span className="text-emerald-700">↓</span>
   );
 }
 

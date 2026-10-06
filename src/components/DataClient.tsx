@@ -257,7 +257,7 @@ export function DataClient({
         </a>
 
         {(hasBloodwork || extracted) && !uploading && (
-          <p className="mt-2 text-xs text-emerald-600">Bloodwork on file ✓</p>
+          <p className="mt-2 text-xs text-emerald-700">Bloodwork on file ✓</p>
         )}
 
         {extracted && (
@@ -287,7 +287,7 @@ export function DataClient({
                     </td>
                     <td className="px-3 py-2">
                       {m.flag === "in_range" ? (
-                        <span className="text-emerald-600">in range</span>
+                        <span className="text-emerald-700">in range</span>
                       ) : (
                         <span className="rounded bg-rose-100 px-1.5 py-0.5 text-[10px] font-semibold text-rose-700 uppercase">
                           {m.flag}
