@@ -9,6 +9,7 @@ import {
 } from "@/lib/data";
 import { assembleEvidence } from "@/lib/engine/evidence";
 import { runInsight } from "@/lib/engine/insight";
+import { isSuggestedQuestion } from "@/lib/suggested-questions";
 
 export const maxDuration = 60;
 
@@ -40,8 +41,13 @@ export async function POST(req: Request) {
       hasGlp1: interventions.some((i) => i.key === "glp1"),
     });
 
+    // Privacy: everyone shares the demo account, so only the suggested chips are
+    // cached. Free-typed questions may contain personal health info and are
+    // answered without being stored.
+    const suggested = isSuggestedQuestion(question);
+
     // Demo safety net: serve a pre-cached answer for this exact evidence state.
-    if (useCache) {
+    if (useCache && suggested) {
       const { data: cached } = await sb
         .from("insights")
         .select("payload")
@@ -63,7 +69,7 @@ export async function POST(req: Request) {
     });
 
     const insight = await runInsight(packet);
-    await persistInsight(sb, user.id, insight, { cacheKey });
+    if (suggested) await persistInsight(sb, user.id, insight, { cacheKey });
 
     return NextResponse.json({ insight, cached: false });
   } catch (err) {

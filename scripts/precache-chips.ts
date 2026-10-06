@@ -1,6 +1,6 @@
 import "./_env";
 import { admin, ensureDemoUser } from "./lib";
-import { SUGGESTED_QUESTIONS } from "@/components/AskWhy";
+import { SUGGESTED_QUESTIONS } from "@/lib/suggested-questions";
 import { assembleEvidence } from "@/lib/engine/evidence";
 import { runInsight } from "@/lib/engine/insight";
 import {

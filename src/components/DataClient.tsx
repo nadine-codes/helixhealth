@@ -255,6 +255,9 @@ export function DataClient({
         >
           Download Jane&rsquo;s sample lab PDF
         </a>
+        <p className="mt-1 text-xs text-[var(--color-muted)]">
+          Demo only: uploads aren&rsquo;t stored. Please use the sample, not your own labs.
+        </p>
 
         {(hasBloodwork || extracted) && !uploading && (
           <p className="mt-2 text-xs text-emerald-700">Bloodwork on file ✓</p>

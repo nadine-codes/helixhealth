@@ -28,18 +28,15 @@ export async function POST(req: Request) {
     // Live extraction via Claude (the "it read my labs" wow moment).
     let extracted = await extractBiomarkers(base64);
 
-    // Demo-safety merge: guarantee the canonical panel is present and complete,
-    // using Claude's extracted value when available, else the known value.
-    const byKey = new Map(
-      extracted.filter((e) => e.key).map((e) => [e.key as string, e])
-    );
+    // Privacy: everyone shares the demo account, so the uploaded file is never
+    // stored and its values are never saved. Claude's extraction is returned to
+    // the uploader only; the account always gets Jane's canonical panel.
     const rows: SignalRow[] = [];
     // clear any prior bloodwork signals so re-upload is idempotent
     await sb.from("signals").delete().eq("user_id", user.id).eq("source", "bloodwork_pdf");
 
     for (const b of BIOMARKERS) {
-      const hit = byKey.get(b.key);
-      const value = hit ? hit.value : b.uploadedMay;
+      const value = b.uploadedMay;
       // previous baseline panel (Feb) for trend context
       rows.push({
         user_id: user.id,
@@ -78,23 +75,6 @@ export async function POST(req: Request) {
 
     const { error: insErr } = await sb.from("signals").insert(rows);
     if (insErr) throw insErr;
-
-    // store the document (best-effort)
-    try {
-      const path = `${user.id}/${Date.now()}-${file.name}`;
-      await sb.storage.from("bloodwork").upload(path, bytes, {
-        contentType: "application/pdf",
-        upsert: true,
-      });
-      await sb.from("documents").insert({
-        user_id: user.id,
-        path,
-        filename: file.name,
-        kind: "bloodwork",
-      });
-    } catch (e) {
-      console.warn("bloodwork storage upload skipped:", e);
-    }
 
     if (!extracted.length) {
       extracted = BIOMARKERS.map((b) => ({

@@ -1,13 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-export const SUGGESTED_QUESTIONS = [
-  "Why am I exhausted every afternoon?",
-  "Why is my recovery declining?",
-  "Why is my recovery worse this month?",
-  "Why do I feel worse in the late luteal phase?",
-];
+import { SUGGESTED_QUESTIONS } from "@/lib/suggested-questions";
 
 export function AskWhy({
   onAsk,
@@ -59,6 +53,10 @@ export function AskWhy({
           </button>
         ))}
       </div>
+      <p className="mt-3 text-xs text-[var(--color-muted)]">
+        Demo account shared by all visitors. Typed questions aren&rsquo;t saved,
+        but please don&rsquo;t enter personal health information.
+      </p>
     </div>
   );
 }
