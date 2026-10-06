@@ -54,9 +54,8 @@ export function AskWhy({
         ))}
       </div>
       <p className="mt-3 text-xs text-[var(--color-muted)]">
-        Answers use Jane&rsquo;s demo data, not yours. Names, emails, phone
-        numbers, dates and ID numbers are removed before your question is sent,
-        and questions aren&rsquo;t saved.
+        Answers use Jane&rsquo;s demo data, not yours. Identifying information
+        is removed before your question is sent, and questions aren&rsquo;t saved.
       </p>
     </div>
   );
