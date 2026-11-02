@@ -64,13 +64,23 @@ ${JSON.stringify(packet, null, 2)}`;
       role: "assistant",
       content: msg.content,
     });
+    // Every tool_use block must be answered by a tool_result in the next turn.
+    const feedback = `The emit_insight payload failed schema validation:\n${JSON.stringify(
+      parsed.error.issues,
+      null,
+      0
+    )}\nCall emit_insight again with a corrected payload that satisfies the schema exactly.`;
+    const toolResults: Anthropic.Messages.ToolResultBlockParam[] = msg.content
+      .filter((b): b is Anthropic.Messages.ToolUseBlock => b.type === "tool_use")
+      .map((b) => ({
+        type: "tool_result",
+        tool_use_id: b.id,
+        is_error: true,
+        content: feedback,
+      }));
     messages.push({
       role: "user",
-      content: `The emit_insight payload failed schema validation:\n${JSON.stringify(
-        parsed.error.issues,
-        null,
-        0
-      )}\nCall emit_insight again with a corrected payload that satisfies the schema exactly.`,
+      content: toolResults.length > 0 ? toolResults : feedback,
     });
   }
 
